@@ -27,12 +27,14 @@ module Unwrappr
           Writers::Title,
           Writers::VersionChange,
           Writers::ProjectLinks,
+          Writers::GithubPullRequests,
           Writers::GithubCommitLog
         ),
         gem_researcher: Researchers::Composite.new(
           Researchers::RubyGemsInfo.new,
           Researchers::GithubRepo.new,
-          Researchers::GithubComparison.new(client)
+          Researchers::GithubComparison.new(client),
+          Researchers::GithubPullRequests.new(client)
         )
       ).annotate
     end
