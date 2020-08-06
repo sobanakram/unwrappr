@@ -53,7 +53,6 @@ module Unwrappr
       def branch_created?
         timestamp = Time.now.strftime('%Y%m%d-%H%M').freeze
         git_wrap do
-          git.checkout('origin/master')
           git.branch("auto_bundle_update_#{timestamp}").checkout
         end
       end
